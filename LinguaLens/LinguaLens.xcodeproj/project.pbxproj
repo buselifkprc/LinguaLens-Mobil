@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5DD8A89D2DB537370059B368 /* eng.traineddata in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8A89C2DB537370059B368 /* eng.traineddata */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5D1950B32DB518A00099CE8E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		5D1950A32DB5189E0099CE8E /* LinguaLens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1950B22DB518A00099CE8E /* LinguaLensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaLensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1950BC2DB518A00099CE8E /* LinguaLensUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaLensUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DD8A89C2DB537370059B368 /* eng.traineddata */ = {isa = PBXFileReference; lastKnownFileType = file; path = eng.traineddata; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		5D19509A2DB5189E0099CE8E = {
 			isa = PBXGroup;
 			children = (
+				5DD8A89C2DB537370059B368 /* eng.traineddata */,
 				5D1950A52DB5189E0099CE8E /* LinguaLens */,
 				5D1950B52DB518A00099CE8E /* LinguaLensTests */,
 				5D1950BF2DB518A00099CE8E /* LinguaLensUITests */,
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 5D19509A2DB5189E0099CE8E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5DD8A89B2DB536F20059B368 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5D1950A42DB5189E0099CE8E /* Products */;
 			projectDirPath = "";
@@ -212,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DD8A89D2DB537370059B368 /* eng.traineddata in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +572,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DD8A89B2DB536F20059B368 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyTesseract/SwiftyTesseract";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 5D19509B2DB5189E0099CE8E /* Project object */;
 }

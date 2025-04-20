@@ -8,10 +8,13 @@
 import SwiftUI
 import PhotosUI
 import Vision
+import VisionKit
 
 struct PhotoOCRView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
+    @State private var ocrResult: String = ""
+    @State private var navigateToTranslate: Bool = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -31,65 +34,70 @@ struct PhotoOCRView: View {
                 matching: .images,
                 photoLibrary: .shared()
             ) {
-                Text("📷 Fotoğraf Seç")
+                Text("📸 Fotoğraf Seç")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.purple)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-            .onChange(of: selectedItem) {
-                guard let selectedItem else { return }
+            .onChange(of: selectedItem) { newItem in
+                guard let newItem else { return }
 
                 Task {
-                    if let data = try? await selectedItem.loadTransferable(type: Data.self) {
+                    if let data = try? await newItem.loadTransferable(type: Data.self),
+                       let uiImage = UIImage(data: data) {
                         selectedImageData = data
-                        performOCR(from: data)  // OCR fonksiyonu burada çalışıyor ✅
+                        recognizeText(from: uiImage)
                     }
                 }
             }
+
+
+            // ✅ Sayfa yönlendirmesi için NavigationLink
+            .navigationDestination(isPresented: $navigateToTranslate) {
+                TranslateView(ocrText: ocrResult)
+            }
+
+            .hidden()
         }
         .padding()
         .navigationTitle("Fotoğraf Seç")
     }
 
-    // 🔍 OCR Fonksiyonu
-    func performOCR(from imageData: Data) {
-        guard let uiImage = UIImage(data: imageData),
-              let cgImage = uiImage.cgImage else {
-            print("Görsel verisi alınamadı.")
+    // ✅ OCR Fonksiyonu
+    func recognizeText(from image: UIImage) {
+        guard let cgImage = image.cgImage else {
+            print("CGImage oluşturulamadı.")
             return
         }
 
         let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        let request = VNRecognizeTextRequest { request, error in
+            guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
 
-        let request = VNRecognizeTextRequest { (request, error) in
-            if let error = error {
-                print("OCR hatası: \(error)")
-                return
+            let recognizedStrings = observations.compactMap { $0.topCandidates(1).first?.string }
+
+            DispatchQueue.main.async {
+                self.ocrResult = recognizedStrings.joined(separator: "\n")
+                self.navigateToTranslate = true
             }
-
-            guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                print("OCR sonucu alınamadı.")
-                return
-            }
-
-            let recognizedStrings = observations.compactMap { observation in
-                observation.topCandidates(1).first?.string
-            }
-
-            // 🧠 OCR sonucu çıktı
-            print("📄 OCR SONUCU:")
-            print(recognizedStrings.joined(separator: "\n"))
         }
 
         request.recognitionLevel = .accurate
-        request.recognitionLanguages = ["en", "tr"]
 
-        do {
-            try requestHandler.perform([request])
-        } catch {
-            print("OCR çalıştırma hatası: \(error)")
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try requestHandler.perform([request])
+            } catch {
+                print("OCR hatası: \(error)")
+            }
         }
+    }
+}
+
+#Preview {
+    NavigationStack {
+        PhotoOCRView()
     }
 }

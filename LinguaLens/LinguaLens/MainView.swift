@@ -29,14 +29,14 @@ struct MainView: View {
                         .cornerRadius(10)
                 }
 
-                NavigationLink(destination: TranslateView()) {
+             //   NavigationLink(destination: TranslateView()) {
                     Text("🌍 Çeviri Sonuçları")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.green)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                }
+             //   } 
                 NavigationLink(destination: RestaurantInfoView()) {
                     Text("🍴 Restoran Bilgisi")
                         .padding()

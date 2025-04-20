@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TranslateView: View {
+    var ocrText: String
     @State private var originalText: String = "BREAKFAST\nSIDES\n- Scrambled Eggs\n- Bacon\n- Toast"
     @State private var translatedText: String = "KAHVALTI\nYAN ÜRÜNLER\n- Çırpılmış Yumurta\n- Pastırma\n- Tost"
 
