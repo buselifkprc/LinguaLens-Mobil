@@ -34,52 +34,64 @@ struct PhotoOCRView: View {
                 matching: .images,
                 photoLibrary: .shared()
             ) {
-                Text("📸 Fotoğraf Seç")
+                Text("📷 Fotoğraf Seç")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.purple)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-            .onChange(of: selectedItem) { newItem in
-                guard let newItem else { return }
+            .onChange(of: selectedItem) { oldValue, newValue in
+                print("🟡 onChange tetiklendi")
+
+                guard let newItem = newValue else {
+                    print("🔴 Yeni item gelmedi")
+                    return
+                }
 
                 Task {
                     if let data = try? await newItem.loadTransferable(type: Data.self),
                        let uiImage = UIImage(data: data) {
+                        print("🟢 Fotoğraf data yüklendi")
                         selectedImageData = data
                         recognizeText(from: uiImage)
+                        print("📸 Fotoğraf seçildi")
+                    } else {
+                        print("❌ Veri alınamadı veya UIImage oluşmadı")
                     }
                 }
             }
 
-
-            // ✅ Sayfa yönlendirmesi için NavigationLink
-            .navigationDestination(isPresented: $navigateToTranslate) {
-                TranslateView(ocrText: ocrResult)
-            }
-
-            .hidden()
         }
         .padding()
         .navigationTitle("Fotoğraf Seç")
+        .navigationDestination(isPresented: $navigateToTranslate) {
+            TranslateView(ocrText: ocrResult)
+        }
     }
 
-    // ✅ OCR Fonksiyonu
     func recognizeText(from image: UIImage) {
+        print("🧠 recognizeText fonksiyonu çağrıldı")
+        print("🧠 OCR başlatıldı")
+
         guard let cgImage = image.cgImage else {
-            print("CGImage oluşturulamadı.")
+            print("❌ CGImage oluşturulamadı.")
             return
         }
 
         let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
         let request = VNRecognizeTextRequest { request, error in
-            guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
+            guard let observations = request.results as? [VNRecognizedTextObservation] else {
+                print("❌ OCR başarısız.")
+                return
+            }
 
             let recognizedStrings = observations.compactMap { $0.topCandidates(1).first?.string }
+            print("✅ OCR sonucu:", recognizedStrings)
 
             DispatchQueue.main.async {
                 self.ocrResult = recognizedStrings.joined(separator: "\n")
+                print("➡️ Navigation tetikleniyor.")
                 self.navigateToTranslate = true
             }
         }
@@ -90,10 +102,12 @@ struct PhotoOCRView: View {
             do {
                 try requestHandler.perform([request])
             } catch {
-                print("OCR hatası: \(error)")
+                print("❌ OCR hatası: \(error)")
             }
         }
     }
+
+
 }
 
 #Preview {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 30) {
                 Image("AppLogo")
                     .resizable()
@@ -29,14 +29,13 @@ struct MainView: View {
                         .cornerRadius(10)
                 }
 
-             //   NavigationLink(destination: TranslateView()) {
-                    Text("🌍 Çeviri Sonuçları")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-             //   } 
+                Text("🌍 Çeviri Sonuçları")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+
                 NavigationLink(destination: RestaurantInfoView()) {
                     Text("🍴 Restoran Bilgisi")
                         .padding()
@@ -61,10 +60,10 @@ struct MainView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
+
             }
             .padding()
             .navigationTitle("")
         }
     }
 }
-
