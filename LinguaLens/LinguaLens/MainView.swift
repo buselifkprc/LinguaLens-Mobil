@@ -14,17 +14,16 @@ struct MainView: View {
                 Image("AppLogo")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 150)
+                    .frame(height: 200)
                     .padding(.top, 10)
                     .shadow(radius: 5)
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-
                 NavigationLink(destination: PhotoOCRView()) {
                     Text("📸 Fotoğraf Yükle ve Tanı")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                        .background(Color.purple)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -32,7 +31,7 @@ struct MainView: View {
                 Text("🌍 Çeviri Sonuçları")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.green)
+                    .background(Color.indigo)
                     .foregroundColor(.white)
                     .cornerRadius(10)
 
@@ -48,7 +47,7 @@ struct MainView: View {
                     Text("🔑 Giriş Ekranı")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.indigo)
+                        .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }

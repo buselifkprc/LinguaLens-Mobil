@@ -11,7 +11,7 @@ import SwiftUI
 struct LinguaLensApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()  // ContentView yerine burası gösterilecek
+            MainView()  
         }
     }
 }

@@ -24,7 +24,7 @@ struct UIKitImagePickerView: View {
                     .foregroundColor(.gray)
             }
 
-            Button("📷 UIKit ile Fotoğraf Seç") {
+            Button("UIKit ile Fotoğraf Seç") {
                 showPicker = true
             }
             .padding()

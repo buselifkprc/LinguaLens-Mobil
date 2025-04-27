@@ -49,7 +49,7 @@ struct TranslateView: View {
         }
     }
 
-    // 🌐 LibreTranslate API ile çeviri
+    //  Libretranslate API ile çeviri
     func translateText(_ input: String) {
         guard let url = URL(string: "https://libretranslate.com/translate") else { return }
 
@@ -92,7 +92,6 @@ struct TranslateView: View {
     }
 }
 
-// JSON cevabını decode etmek için model
 struct TranslationResult: Decodable {
     let translatedText: String
 }

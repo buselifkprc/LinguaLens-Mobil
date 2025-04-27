@@ -13,7 +13,7 @@ struct LoginView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("👤 Giriş Yap")
+            Text("👤")
                 .font(.largeTitle)
                 .bold()
 
@@ -33,7 +33,7 @@ struct LoginView: View {
             Button(action: {
                 print("Giriş Yap butonuna basıldı")
             }) {
-                Text("🔐 Giriş Yap")
+                Text("Giriş Yap")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)

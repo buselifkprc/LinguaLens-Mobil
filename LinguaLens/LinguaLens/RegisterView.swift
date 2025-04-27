@@ -15,7 +15,7 @@ struct RegisterView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("📝 Kayıt Ol")
+            Text("👤")
                 .font(.largeTitle)
                 .bold()
 
@@ -45,7 +45,7 @@ struct RegisterView: View {
             Button(action: {
                 print("Hesap Oluştur butonuna basıldı")
             }) {
-                Text("✅ Hesap Oluştur")
+                Text("Hesap Oluştur")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.green)

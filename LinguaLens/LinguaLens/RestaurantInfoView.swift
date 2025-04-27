@@ -6,18 +6,15 @@
 //
 
 import SwiftUI
-
-// MARK: - API Anahtarı alma
 func getAPIKey() -> String {
     guard let path = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
           let dict = NSDictionary(contentsOfFile: path),
           let key = dict["YELP_API_KEY"] as? String else {
-        fatalError("❌ Yelp API anahtarı alınamadı.")
+        fatalError("Yelp API anahtarı alınamadı.")
     }
     return key
 }
 
-// MARK: - Yelp Modeli
 struct YelpSearchResponse: Decodable {
     let businesses: [YelpBusiness]
 }
@@ -33,7 +30,6 @@ struct YelpLocation: Decodable {
     let city: String
 }
 
-// MARK: - Ana View
 struct RestaurantInfoView: View {
     @State private var restaurantName: String = ""
     @State private var address: String = ""
@@ -50,7 +46,7 @@ struct RestaurantInfoView: View {
                 Divider()
 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("📍 İsim: \(restaurantName)").bold()
+                    Text("\(restaurantName)").bold()
                     Text("📍 Konum: \(address)").bold()
                     Text("⭐️ Puan: \(rating, specifier: "%.1f")").bold()
                 }
@@ -80,7 +76,7 @@ struct RestaurantInfoView: View {
         }
     }
 
-    // MARK: - Yelp API'den veri çekme
+    // Yelp API'den veri çekme
     func fetchRestaurantInfo() {
         let apiKey = getAPIKey()
         let term = "The Breakfast Club"
@@ -90,7 +86,7 @@ struct RestaurantInfoView: View {
         let urlString = baseURL + query
         guard let encodedURL = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: encodedURL) else {
-            print("❌ URL encoding başarısız.")
+            print("URL encoding başarısız.")
             return
         }
 
@@ -100,17 +96,16 @@ struct RestaurantInfoView: View {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("❌ API hatası:", error.localizedDescription)
+                print("API hatası:", error.localizedDescription)
                 return
             }
 
             guard let data = data else {
-                print("❌ Veri boş")
+                print("Veri boş")
                 return
             }
 
-            // ✅ DEBUG: API yanıtı çıktısı
-            print("📦 Gelen Veri:\n", String(data: data, encoding: .utf8) ?? "Decode edilemedi")
+            print("Gelen Veri:\n", String(data: data, encoding: .utf8) ?? "Decode edilemedi")
 
             do {
                 let decoded = try JSONDecoder().decode(YelpSearchResponse.self, from: data)
@@ -127,7 +122,7 @@ struct RestaurantInfoView: View {
                     }
                 }
             } catch {
-                print("❌ JSON Parse Hatası:", error.localizedDescription)
+                print("JSON Parse Hatası:", error.localizedDescription)
             }
         }.resume()
     }
