@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct TranslateView: View {
     var ocrText: String
-    
-    @State private var translatedText: String = "Çeviri bekleniyor..."
+
+    @State private var translatedText: String = ""
     @State private var isLoading: Bool = true
+    @State private var errorMessage: String? = nil
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                
-                Text("🔤 Tanınan Metin:")
+                Text("Tanınan Metin:")
                     .font(.headline)
 
                 Text(ocrText)
@@ -33,6 +35,10 @@ struct TranslateView: View {
 
                 if isLoading {
                     ProgressView("Çeviri yapılıyor...")
+                } else if let error = errorMessage {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding()
                 } else {
                     Text(translatedText)
                         .padding()
@@ -49,9 +55,12 @@ struct TranslateView: View {
         }
     }
 
-    //  Libretranslate API ile çeviri
     func translateText(_ input: String) {
-        guard let url = URL(string: "https://libretranslate.com/translate") else { return }
+        guard let url = URL(string: "https://libretranslate.com/translate") else {
+            errorMessage = "API adresi geçersiz."
+            isLoading = false
+            return
+        }
 
         let parameters: [String: Any] = [
             "q": input,
@@ -60,7 +69,11 @@ struct TranslateView: View {
             "format": "text"
         ]
 
-        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {
+            errorMessage = "JSON verisi oluşturulamadı."
+            isLoading = false
+            return
+        }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -72,9 +85,16 @@ struct TranslateView: View {
                 isLoading = false
             }
 
-            guard let data = data, error == nil else {
+            if let error = error {
                 DispatchQueue.main.async {
-                    translatedText = "❌ API hatası: \(error?.localizedDescription ?? "Bilinmiyor")"
+                    errorMessage = "Ağ hatası: \(error.localizedDescription)"
+                }
+                return
+            }
+
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    errorMessage = "Veri alınamadı."
                 }
                 return
             }
@@ -82,13 +102,38 @@ struct TranslateView: View {
             if let result = try? JSONDecoder().decode(TranslationResult.self, from: data) {
                 DispatchQueue.main.async {
                     translatedText = result.translatedText
+                    saveToFirestore(original: input, translated: result.translatedText)
                 }
             } else {
                 DispatchQueue.main.async {
-                    translatedText = "❌ Çeviri alınamadı."
+                    errorMessage = "Çeviri alınamadı. Yanıt formatı beklenmedik olabilir."
                 }
             }
         }.resume()
+    }
+
+    // Firestore'a geçmiş kaydı
+    func saveToFirestore(original: String, translated: String) {
+        guard let user = Auth.auth().currentUser else {
+            print("Kullanıcı oturumu yok.")
+            return
+        }
+
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(user.uid)
+            .collection("translations")
+            .addDocument(data: [
+                "originalText": original,
+                "translatedText": translated,
+                "timestamp": Timestamp(date: Date())
+            ]) { error in
+                if let error = error {
+                    print("Firestore'a kaydetme hatası: \(error.localizedDescription)")
+                } else {
+                    print("Çeviri geçmişi Firestore'a kaydedildi.")
+                }
+            }
     }
 }
 

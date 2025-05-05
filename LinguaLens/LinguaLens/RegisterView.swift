@@ -6,68 +6,87 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct RegisterView: View {
-    @State private var name: String = ""
-    @State private var surname: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var name = ""
+    @State private var surname = ""
+    @State private var email = ""
+    @State private var password = ""
+    @State private var registerError: String?
+    @State private var isRegistered = false
+    @State private var successMessage: String?
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("👤")
-                .font(.largeTitle)
-                .bold()
+            Image(systemName: "person.crop.circle")
+                .resizable()
+                .frame(width: 80, height: 80)
+                .padding(.top, 50)
 
             TextField("Ad", text: $name)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.words)
 
             TextField("Soyad", text: $surname)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.words)
 
             TextField("E-posta", text: $email)
+                .autocapitalization(.none)
                 .keyboardType(.emailAddress)
-                .textInputAutocapitalization(.none)
-                .autocorrectionDisabled()
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
-
+                .textContentType(.emailAddress)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                
             SecureField("Şifre", text: $password)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+               
 
-            Button(action: {
-                print("Hesap Oluştur butonuna basıldı")
-            }) {
-                Text("Hesap Oluştur")
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            if let error = registerError {
+                Text(error)
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
             }
 
-            Divider()
+            Button("Hesap Oluştur") {
+                registerUser()
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.green)
+            .foregroundColor(.white)
+            .cornerRadius(8)
 
-            Text("Zaten hesabınız var mı? Giriş yapın")
-                .foregroundColor(.gray)
-                .font(.footnote)
+            if let successMessage = successMessage {
+                Text(successMessage)
+                    .foregroundColor(.green)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 10)
+            }
 
             Spacer()
-        }
-        NavigationLink(destination: LoginView()) {
-            Text("Zaten hesabınız var mı? Giriş yapın")
-                .foregroundColor(.blue)
-                .font(.footnote)
-        }
 
+            NavigationLink(destination: LoginView()) {
+                Text("Zaten hesabınız var mı? Giriş yapın")
+                    .font(.footnote)
+                    .foregroundColor(.blue)
+            }
+        }
         .padding()
-        .navigationTitle("Kayıt")
+        .navigationBarTitle("Kayıt Ol", displayMode: .inline)
+    }
+
+    func registerUser() {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                self.registerError = "Kayıt başarısız: \(error.localizedDescription)"
+                self.successMessage = nil
+            } else {
+                self.registerError = nil
+                self.successMessage = "✅ Kayıt başarılı!"
+                self.isRegistered = true
+                print("✅ Kayıt başarılı: \(result?.user.email ?? "")")
+            }
+        }
     }
 }

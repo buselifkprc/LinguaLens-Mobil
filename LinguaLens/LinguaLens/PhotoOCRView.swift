@@ -11,6 +11,8 @@ import Vision
 import VisionKit
 
 struct PhotoOCRView: View {
+    @State private var isProcessing: Bool = false
+    @State private var errorMessage: String? = nil
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     @State private var ocrResult: String = ""
@@ -61,6 +63,17 @@ struct PhotoOCRView: View {
                     }
                 }
             }
+            if isProcessing {
+                ProgressView("Metin işleniyor...")
+                    .padding()
+            }
+
+            if let error = errorMessage {
+                Text(error)
+                    .foregroundColor(.red)
+                    .padding()
+            }
+
 
         }
         .padding()
@@ -71,27 +84,42 @@ struct PhotoOCRView: View {
     }
 
     func recognizeText(from image: UIImage) {
-        print("RecognizeText fonksiyonu çağrıldı")
-        print("OCR başlatıldı")
-
         guard let cgImage = image.cgImage else {
-            print("CGImage oluşturulamadı.")
+            errorMessage = "Görsel okunamadı."
             return
         }
 
+        isProcessing = true
+        errorMessage = nil
+
         let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
         let request = VNRecognizeTextRequest { request, error in
+            DispatchQueue.main.async {
+                isProcessing = false
+            }
+
+            if let error = error {
+                DispatchQueue.main.async {
+                    errorMessage = "OCR hatası: \(error.localizedDescription)"
+                }
+                return
+            }
+
             guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                print("OCR başarısız.")
+                DispatchQueue.main.async {
+                    errorMessage = "Metin bulunamadı."
+                }
                 return
             }
 
             let recognizedStrings = observations.compactMap { $0.topCandidates(1).first?.string }
-            print("OCR sonucu:", recognizedStrings)
 
             DispatchQueue.main.async {
                 self.ocrResult = recognizedStrings.joined(separator: "\n")
-                print("Navigation tetikleniyor.")
+                if self.ocrResult.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    self.errorMessage = "Fotoğrafta okunabilir metin bulunamadı."
+                }
+
                 self.navigateToTranslate = true
             }
         }
@@ -102,12 +130,13 @@ struct PhotoOCRView: View {
             do {
                 try requestHandler.perform([request])
             } catch {
-                print("OCR hatası: \(error)")
+                DispatchQueue.main.async {
+                    errorMessage = "OCR çalıştırılamadı."
+                    isProcessing = false
+                }
             }
         }
     }
-
-
 }
 
 #Preview {

@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace
+!Pods/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# SwiftPM
+.build/
+Package.resolved
+
+# Firebase
+GoogleService-Info.plist

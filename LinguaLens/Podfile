@@ -1,0 +1,17 @@
+platform :ios, '13.0'
+
+target 'LinguaLens' do
+  use_frameworks!
+
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+
+  target 'LinguaLensTests' do
+    inherit! :search_paths
+  end
+
+  target 'LinguaLensUITests' do
+    inherit! :search_paths
+  end
+end

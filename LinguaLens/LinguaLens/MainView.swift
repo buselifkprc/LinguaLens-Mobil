@@ -34,6 +34,15 @@ struct MainView: View {
                     .background(Color.indigo)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                NavigationLink(destination: TranslationHistoryView()) {
+                    Text("📜 Çeviri Geçmişi")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.teal)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+
 
                 NavigationLink(destination: RestaurantInfoView()) {
                     Text("🍴 Restoran Bilgisi")
