@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		088F3CB87333DB89601BEA7A /* Pods_LinguaLensUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D4867247E1C0BCE44C62F9 /* Pods_LinguaLensUITests.framework */; };
-		45CBF6198F025A046EAEFB10 /* Pods_LinguaLens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52011F09E64FB10C4456EE34 /* Pods_LinguaLens.framework */; };
 		5D3BD8E22DC81756005F4487 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BD8E12DC81755005F4487 /* Untitled.swift */; };
 		5D3BD8E32DC81756005F4487 /* PhotoOCRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BD8E02DC81755005F4487 /* PhotoOCRView.swift */; };
 		5DD8A89D2DB537370059B368 /* eng.traineddata in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8A89C2DB537370059B368 /* eng.traineddata */; };
-		AC3B413641ACB313DC097D03 /* Pods_LinguaLensTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B390AC3D48225C24C64B864C /* Pods_LinguaLensTests.framework */; };
+		5DF2AB282DC93D0400B8E1C1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5D849D472DC6ABEE00FFDE7E /* FirebaseAnalytics */; };
+		5DF2AB292DC93D0400B8E1C1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D849D492DC6ABEE00FFDE7E /* FirebaseAuth */; };
+		5DF2AB2A2DC93D0400B8E1C1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D849D4B2DC6ABEE00FFDE7E /* FirebaseCore */; };
+		5DF2AB2B2DC93D0400B8E1C1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D849D4D2DC6ABEE00FFDE7E /* FirebaseFirestore */; };
+		5DF2AB2C2DC93D0400B8E1C1 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5D849D502DC6C49F00FFDE7E /* GoogleSignIn */; };
+		5DF2AB2D2DC93D0400B8E1C1 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5D849D522DC6C49F00FFDE7E /* GoogleSignInSwift */; };
+		5DF2AB2E2DC93D0400B8E1C1 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5D3BD8382DC80F60005F4487 /* FirebaseFirestoreCombine-Community */; };
+		5DF2AB2F2DC93D0400B8E1C1 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 5D3BD83A2DC80F60005F4487 /* FirebaseInAppMessaging-Beta */; };
+		5DF2AB302DC93D0400B8E1C1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5D3BD83C2DC80F60005F4487 /* FirebaseMessaging */; };
+		5DF2AB312DC93D0400B8E1C1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5D3BD83E2DC80F60005F4487 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,21 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		15793883453AB4BCF1A74A32 /* Pods-LinguaLensUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLensUITests.release.xcconfig"; path = "Target Support Files/Pods-LinguaLensUITests/Pods-LinguaLensUITests.release.xcconfig"; sourceTree = "<group>"; };
-		52011F09E64FB10C4456EE34 /* Pods_LinguaLens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinguaLens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59BF4270731C0C99003069C2 /* Pods-LinguaLens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLens.release.xcconfig"; path = "Target Support Files/Pods-LinguaLens/Pods-LinguaLens.release.xcconfig"; sourceTree = "<group>"; };
 		5D1950A32DB5189E0099CE8E /* LinguaLens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1950B22DB518A00099CE8E /* LinguaLensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaLensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1950BC2DB518A00099CE8E /* LinguaLensUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaLensUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3BD8E02DC81755005F4487 /* PhotoOCRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOCRView.swift; sourceTree = "<group>"; };
 		5D3BD8E12DC81755005F4487 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		5DD8A89C2DB537370059B368 /* eng.traineddata */ = {isa = PBXFileReference; lastKnownFileType = file; path = eng.traineddata; sourceTree = "<group>"; };
-		6C890B47F733604EF7D6F176 /* Pods-LinguaLensTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLensTests.debug.xcconfig"; path = "Target Support Files/Pods-LinguaLensTests/Pods-LinguaLensTests.debug.xcconfig"; sourceTree = "<group>"; };
-		934C3275A0D0E0F7C3B97048 /* Pods-LinguaLens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLens.debug.xcconfig"; path = "Target Support Files/Pods-LinguaLens/Pods-LinguaLens.debug.xcconfig"; sourceTree = "<group>"; };
-		B35179AE0F709963AB223042 /* Pods-LinguaLensUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLensUITests.debug.xcconfig"; path = "Target Support Files/Pods-LinguaLensUITests/Pods-LinguaLensUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		B390AC3D48225C24C64B864C /* Pods_LinguaLensTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinguaLensTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6D4867247E1C0BCE44C62F9 /* Pods_LinguaLensUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinguaLensUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EECDB38D992CF5DD62F0DEED /* Pods-LinguaLensTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLensTests.release.xcconfig"; path = "Target Support Files/Pods-LinguaLensTests/Pods-LinguaLensTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -71,15 +69,11 @@
 		};
 		5D1950B52DB518A00099CE8E /* LinguaLensTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = LinguaLensTests;
 			sourceTree = "<group>";
 		};
 		5D1950BF2DB518A00099CE8E /* LinguaLensUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = LinguaLensUITests;
 			sourceTree = "<group>";
 		};
@@ -90,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3B413641ACB313DC097D03 /* Pods_LinguaLensTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				088F3CB87333DB89601BEA7A /* Pods_LinguaLensUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,26 +98,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45CBF6198F025A046EAEFB10 /* Pods_LinguaLens.framework in Frameworks */,
+				5DF2AB312DC93D0400B8E1C1 /* FirebaseStorage in Frameworks */,
+				5DF2AB302DC93D0400B8E1C1 /* FirebaseMessaging in Frameworks */,
+				5DF2AB2F2DC93D0400B8E1C1 /* FirebaseInAppMessaging-Beta in Frameworks */,
+				5DF2AB2E2DC93D0400B8E1C1 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				5DF2AB2D2DC93D0400B8E1C1 /* GoogleSignInSwift in Frameworks */,
+				5DF2AB2C2DC93D0400B8E1C1 /* GoogleSignIn in Frameworks */,
+				5DF2AB2B2DC93D0400B8E1C1 /* FirebaseFirestore in Frameworks */,
+				5DF2AB2A2DC93D0400B8E1C1 /* FirebaseCore in Frameworks */,
+				5DF2AB292DC93D0400B8E1C1 /* FirebaseAuth in Frameworks */,
+				5DF2AB282DC93D0400B8E1C1 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2151009013D7190FB8D720E1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				934C3275A0D0E0F7C3B97048 /* Pods-LinguaLens.debug.xcconfig */,
-				59BF4270731C0C99003069C2 /* Pods-LinguaLens.release.xcconfig */,
-				6C890B47F733604EF7D6F176 /* Pods-LinguaLensTests.debug.xcconfig */,
-				EECDB38D992CF5DD62F0DEED /* Pods-LinguaLensTests.release.xcconfig */,
-				B35179AE0F709963AB223042 /* Pods-LinguaLensUITests.debug.xcconfig */,
-				15793883453AB4BCF1A74A32 /* Pods-LinguaLensUITests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		5D19509A2DB5189E0099CE8E = {
 			isa = PBXGroup;
 			children = (
@@ -136,8 +124,6 @@
 				5D1950B52DB518A00099CE8E /* LinguaLensTests */,
 				5D1950BF2DB518A00099CE8E /* LinguaLensUITests */,
 				5D1950A42DB5189E0099CE8E /* Products */,
-				2151009013D7190FB8D720E1 /* Pods */,
-				6B0D21BCC89E5E2A49A892CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,16 +137,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B0D21BCC89E5E2A49A892CE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				52011F09E64FB10C4456EE34 /* Pods_LinguaLens.framework */,
-				B390AC3D48225C24C64B864C /* Pods_LinguaLensTests.framework */,
-				E6D4867247E1C0BCE44C62F9 /* Pods_LinguaLensUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,11 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D1950C62DB518A00099CE8E /* Build configuration list for PBXNativeTarget "LinguaLens" */;
 			buildPhases = (
-				F9667238332A5E472F952CB2 /* [CP] Check Pods Manifest.lock */,
+				1ACB7631A403D4A0293F5E5F /* [CP] Check Pods Manifest.lock */,
 				5D19509F2DB5189E0099CE8E /* Sources */,
 				5D1950A12DB5189E0099CE8E /* Resources */,
 				5D9D70C82DC82FF700757E97 /* Frameworks */,
-				95B433CB7482C0184F443F11 /* [CP] Embed Pods Frameworks */,
+				DBABE5C1592EDCA528DE8FBF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,7 +178,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D1950C92DB518A00099CE8E /* Build configuration list for PBXNativeTarget "LinguaLensTests" */;
 			buildPhases = (
-				C67BF3E078E382F5EC390C06 /* [CP] Check Pods Manifest.lock */,
 				5D1950AE2DB518A00099CE8E /* Sources */,
 				5D1950AF2DB518A00099CE8E /* Frameworks */,
 				5D1950B02DB518A00099CE8E /* Resources */,
@@ -224,7 +199,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D1950CC2DB518A00099CE8E /* Build configuration list for PBXNativeTarget "LinguaLensUITests" */;
 			buildPhases = (
-				B2D61E5A150AD21FD4EB9E2B /* [CP] Check Pods Manifest.lock */,
 				5D1950B82DB518A00099CE8E /* Sources */,
 				5D1950B92DB518A00099CE8E /* Frameworks */,
 				5D1950BA2DB518A00099CE8E /* Resources */,
@@ -317,68 +291,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		95B433CB7482C0184F443F11 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LinguaLens/Pods-LinguaLens-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LinguaLens/Pods-LinguaLens-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LinguaLens/Pods-LinguaLens-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2D61E5A150AD21FD4EB9E2B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LinguaLensUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C67BF3E078E382F5EC390C06 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LinguaLensTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F9667238332A5E472F952CB2 /* [CP] Check Pods Manifest.lock */ = {
+		1ACB7631A403D4A0293F5E5F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -398,6 +311,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBABE5C1592EDCA528DE8FBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LinguaLens/Pods-LinguaLens-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LinguaLens/Pods-LinguaLens-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LinguaLens/Pods-LinguaLens-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -495,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -553,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -565,7 +499,6 @@
 		};
 		5D1950C72DB518A00099CE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 934C3275A0D0E0F7C3B97048 /* Pods-LinguaLens.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -582,6 +515,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -597,7 +531,6 @@
 		};
 		5D1950C82DB518A00099CE8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BF4270731C0C99003069C2 /* Pods-LinguaLens.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -614,6 +547,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,7 +563,6 @@
 		};
 		5D1950CA2DB518A00099CE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C890B47F733604EF7D6F176 /* Pods-LinguaLensTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -649,7 +582,6 @@
 		};
 		5D1950CB2DB518A00099CE8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EECDB38D992CF5DD62F0DEED /* Pods-LinguaLensTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -669,7 +601,6 @@
 		};
 		5D1950CD2DB518A00099CE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B35179AE0F709963AB223042 /* Pods-LinguaLensUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -687,7 +618,6 @@
 		};
 		5D1950CE2DB518A00099CE8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15793883453AB4BCF1A74A32 /* Pods-LinguaLensUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
